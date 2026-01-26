@@ -1,0 +1,113 @@
+/* ------------------------------
+   Import Inter font first
+--------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------
+   Base Layer: Global Styles
+--------------------------------*/
+@layer base {
+  /* Body */
+  body {
+    @apply font-sans antialiased m-0 bg-nvidiaDark text-white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+    letter-spacing: -0.02em;
+  }
+
+  /* Code blocks */
+  code {
+    @apply font-mono;
+  }
+}
+
+/* ------------------------------
+   Utilities
+--------------------------------*/
+@layer utilities {
+  /* Gradient text like NVIDIA */
+  .text-nvidia-gradient {
+    background: linear-gradient(90deg, #76B900, #00F0FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Neon glow text */
+  .text-glow {
+    text-shadow: 0 0 20px rgba(118, 185, 0, 0.7), 0 0 40px rgba(0, 240, 255, 0.5);
+  }
+
+  /* NVIDIA-style button */
+  .btn-nvidia {
+    @apply font-display font-bold px-6 py-3 rounded-lg transition-all duration-300;
+    background: linear-gradient(90deg, #76B900, #00F0FF);
+    color: #0B0B0B;
+    box-shadow: 0 0 10px rgba(118, 185, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.3);
+  }
+
+  .btn-nvidia:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(118, 185, 0, 0.7), 0 0 30px rgba(0, 240, 255, 0.5);
+  }
+}
+
+/* ------------------------------
+   LOGO GENSPARK
+--------------------------------*/
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: system-ui, sans-serif;
+}
+
+.logo-emoji {
+  font-size: 40px;
+}
+
+/* .logo-text {
+  font-size: 42px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #3b82f6, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+} */
+
+@keyframes sparkle {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(250,204,21,0.6)); }
+  50% { filter: drop-shadow(0 0 30px rgba(250,204,21,1)); }
+}
+
+/* @keyframes megaSparkle {
+  0% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 8px rgba(250,204,21,0.5));
+  }
+  25% {
+    transform: scale(1.15) rotate(15deg);
+    filter: drop-shadow(0 0 20px rgba(250,204,21,0.9));
+  }
+  50% {
+    transform: scale(1.3) rotate(-15deg);
+    filter: drop-shadow(0 0 35px rgba(250,204,21,1));
+  }
+  75% {
+    transform: scale(1.15) rotate(10deg);
+    filter: drop-shadow(0 0 20px rgba(250,204,21,0.9));
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 8px rgba(250,204,21,0.5));
+  }
+} */
