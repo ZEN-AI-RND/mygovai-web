@@ -1,7 +1,7 @@
 /* ------------------------------
    Import Inter font first
 --------------------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -16,10 +16,16 @@
     @apply font-sans antialiased m-0 bg-nvidiaDark text-white;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   /* Headings */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display font-bold tracking-tight;
     letter-spacing: -0.02em;
   }
@@ -27,6 +33,11 @@
   /* Code blocks */
   code {
     @apply font-mono;
+  }
+
+  /* Ensure all elements respect box-sizing */
+  * {
+    box-sizing: border-box;
   }
 }
 
@@ -36,27 +47,53 @@
 @layer utilities {
   /* Gradient text like NVIDIA */
   .text-nvidia-gradient {
-    background: linear-gradient(90deg, #76B900, #00F0FF);
+    background: linear-gradient(90deg, #76b900, #00f0ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   /* Neon glow text */
   .text-glow {
-    text-shadow: 0 0 20px rgba(118, 185, 0, 0.7), 0 0 40px rgba(0, 240, 255, 0.5);
+    text-shadow:
+      0 0 20px rgba(118, 185, 0, 0.7),
+      0 0 40px rgba(0, 240, 255, 0.5);
   }
 
   /* NVIDIA-style button */
   .btn-nvidia {
     @apply font-display font-bold px-6 py-3 rounded-lg transition-all duration-300;
-    background: linear-gradient(90deg, #76B900, #00F0FF);
-    color: #0B0B0B;
-    box-shadow: 0 0 10px rgba(118, 185, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.3);
+    background: linear-gradient(90deg, #76b900, #00f0ff);
+    color: #0b0b0b;
+    box-shadow:
+      0 0 10px rgba(118, 185, 0, 0.5),
+      0 0 20px rgba(0, 240, 255, 0.3);
   }
 
   .btn-nvidia:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(118, 185, 0, 0.7), 0 0 30px rgba(0, 240, 255, 0.5);
+    box-shadow:
+      0 0 15px rgba(118, 185, 0, 0.7),
+      0 0 30px rgba(0, 240, 255, 0.5);
+  }
+
+  /* Mobile-specific utilities */
+  .touch-optimized {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+    touch-action: manipulation;
+  }
+
+  /* Prevent text selection on interactive elements */
+  .no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Smooth scrolling for all devices */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -85,29 +122,48 @@
 } */
 
 @keyframes sparkle {
-  0%, 100% { filter: drop-shadow(0 0 10px rgba(250,204,21,0.6)); }
-  50% { filter: drop-shadow(0 0 30px rgba(250,204,21,1)); }
-}
-
-/* @keyframes megaSparkle {
-  0% {
-    transform: scale(1) rotate(0deg);
-    filter: drop-shadow(0 0 8px rgba(250,204,21,0.5));
-  }
-  25% {
-    transform: scale(1.15) rotate(15deg);
-    filter: drop-shadow(0 0 20px rgba(250,204,21,0.9));
+  0%,
+  100% {
+    filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.6));
   }
   50% {
-    transform: scale(1.3) rotate(-15deg);
-    filter: drop-shadow(0 0 35px rgba(250,204,21,1));
+    filter: drop-shadow(0 0 30px rgba(250, 204, 21, 1));
   }
-  75% {
-    transform: scale(1.15) rotate(10deg);
-    filter: drop-shadow(0 0 20px rgba(250,204,21,0.9));
+}
+
+/* ------------------------------
+   Mobile Optimizations
+--------------------------------*/
+@media (max-width: 640px) {
+  /* Reduce animation complexity on mobile for better performance */
+  * {
+    animation-duration: 0.5s !important;
   }
-  100% {
-    transform: scale(1) rotate(0deg);
-    filter: drop-shadow(0 0 8px rgba(250,204,21,0.5));
+
+  /* Ensure images and media scale properly */
+  img,
+  video,
+  iframe {
+    max-width: 100%;
+    height: auto;
   }
-} */
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Medium screen adjustments */
+  body {
+    font-size: 16px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase tap targets for touch devices */
+  button,
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
